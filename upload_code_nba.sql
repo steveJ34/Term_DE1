@@ -118,18 +118,6 @@ TeamAbbr VARCHAR(10),
 Location VARCHAR(100),
 PRIMARY KEY(TeamID));
 
--- Top Scorers 
-
-CREATE TABLE Top_Scorers (
-Points INT NOT NULL,
-Name VARCHAR(100) NOT NULL,
-Year INT,
-TeamName VARCHAR(100),
-OppTeamName VARCHAR(100),
-TeamScore INT,
-OppTeamScore INT,
-MinsPlayed INT);
-
 
 -- local_infile to be ON
 
@@ -193,15 +181,5 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES
 (TeamID, TeamName, TeamAbbr, Location);
 
--- Load Top Scorers 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Teams.csv'
-INTO TABLE Top_Scorers
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\r\n'
-IGNORE 1 LINES
-(Points, Name, Year, TeamName, OppTeamName, TeamScore, OppTeamScore, MinsPlayed);
-
-
-select * from top_scorers;
 
