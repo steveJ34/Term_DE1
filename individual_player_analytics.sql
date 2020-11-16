@@ -1,0 +1,110 @@
+use nba_17_18;
+
+-- Creating analytical layer for individual level of analytics
+
+ DROP PROCEDURE IF EXISTS CreatePlayersAnalytic;
+
+DELIMITER //
+
+CREATE PROCEDURE CreatePlayersAnalytic()
+
+BEGIN
+DROP TABLE IF EXISTS Players_Analytic;
+
+	CREATE TABLE Players_Analytic AS
+	SELECT 
+       Players.Name,
+	   Players.Pos As Position, 
+	   Players.Age As Age,
+       Player_Stats.TM As Franchise,
+	   Player_Stats.Gms As Games,
+	   Player_Stats.MP As MinutesPlayed,   
+	   Player_Stats.FG As FieldGoals,
+	   Player_Stats.FGA As FieldGoalsAttempt,   
+	   Player_Stats.FGP As FieldGoalsPercent,
+	   Player_Stats.TRB As TotRebound,
+	   Player_Stats.AST As Assist,
+       Player_Stats.TOV As Turnover,
+       Player_Stats.PTS As Points
+       
+	FROM Players
+    
+JOIN Player_Stats ON name = Player
+	ORDER BY 
+		Name; 
+
+END //
+DELIMITER ; 
+
+drop event if exists CreatePlayersAnalyticEvent; 
+
+-- Creating an event for Players anallytics tables to see when table is updated 
+ 
+CREATE EVENT CreatePlayersMartEvent
+ON SCHEDULE EVERY 1 MINUTE
+STARTS CURRENT_TIMESTAMP
+ENDS CURRENT_TIMESTAMP + INTERVAL 1 HOUR
+DO
+   CALL CreatePlayersMart();
+   INSERT INTO messages(message,created_at)
+   VALUES('Player Mart Created',NOW());
+
+SELECT * FROM messages; 
+
+-- Creating data marts as views to answer the analytic questions
+ 
+-- Players that averaged 25 or more points per game
+
+DROP VIEW IF EXISTS TopPPG;
+
+CREATE VIEW `TopPPG` AS
+
+SELECT Name, Position, Age, Points/Games AS ppg
+FROM Players_Analytic
+WHERE Points/Games >= 25;
+
+SELECT * FROM TopPPG; 
+
+-- Count of players that averaged between 10 and 20 points per game
+
+DROP VIEW IF EXISTS ScorersBtw10and20;
+
+CREATE VIEW `ScorersBtw10and20` AS
+SELECT COUNT(*) as numberOfPlayers
+FROM Players_Analytic
+WHERE Points/Games BETWEEN 10 AND 20;
+
+SELECT * FROM ScorersBtw10and20;
+
+-- Top 10 most time efficient scorers in the league
+
+DROP VIEW IF EXISTS TopTimeEfficient;
+
+CREATE VIEW `TopTimeEfficient` AS
+
+SELECT Name, Position, Points, MinutesPlayed, pointsPer48
+FROM (
+	SELECT Name, Position, Points, MinutesPlayed, CAST(Points as FLOAT)*48/CAST(MinutesPlayed as FLOAT) as PointsPer48
+	FROM Players_Analytic
+	WHERE Points > 0 AND MinutesPlayed > 0) as ps
+ORDER BY PointsPer48 DESC
+LIMIT 10;
+
+SELECT * FROM TopTimeEfficient;
+
+-- PLayers who played half the season or less but still averaged 15 points 
+
+DROP VIEW IF EXISTS HalfSeason15Points;
+
+CREATE VIEW `HalfSeason15Points` AS
+
+
+SELECT Name, Position, Games, Points, CAST(Points as FLOAT)/CAST(Games as FLOAT) as PPG
+FROM Players_Mart
+WHERE Games <= 41 
+AND CAST(Points as FLOAT)/CAST(Games as FLOAT) > 15 
+AND Points > 0
+ORDER BY CAST(Points as FLOAT)/CAST(Games as FLOAT) DESC;
+
+SELECT * FROM HalfSeason15Points; 
+
