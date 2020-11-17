@@ -23,27 +23,27 @@ LINES TERMINATED BY '\r\n'
 IGNORE 1 LINES 
 
 ### ANALYTICAL LAYER: 
-After the tables were loaded to MySQL, the analytical data layer was established. In order to enable multi-level Two data marts were created, using events which re-create the data marts every minute for an hour and record the times of creation to a table called “messages”   
+After the tables were loaded to MySQL, the analytical data layer was established. Due to the fact that not all of the tables in the operationla layer can be related to each other, the decision to create two analytical tables was made. The tables are created using events which re-create them every minute for an hour and record the times of creation to a table called “messages”. Below is amore deatailed description for each of the created tables.  
 
 
-1. Team_Coach_Analytic: includes information about teams such as the Franchise name, name abbreviation, city/state and the coach. In addition, it includes both defensive and offensive statistics. 
-1. Players_Analytic: includes the players’ attributes such as name, age, position and franchise as well as individual performance metrics like games played.
+1. Team_Coach_Analytic: includes information about teams such as the Franchise name, name abbreviation, city/state and the coach. In addition, it includes both defensive and offensive statistics. This can provide insight to team performance for he season, using both the already available data and trnformed data (e.g. assist on field goal percentage)
+1. Players_Analytic: includes the players’ attributes such as name, age, position and franchise as well as individual performance metrics like games played. Data from this layer provides the opportunity to create more detailed analytic insight to see what player were major contributors to team performance. 
 
 By creating views from the above data marts, we can potentially answer the following question. 
 
 ### POTENTIAL ANALYTICS:  
 
-#### Team Level 
+#### Team Level (Team_Coach_Analytic)
 
 * Question 1: Who are the top 10 defensive coaches (ordered by steals)
 * Question 2: Who are the top 10 coaches that rely on three point shots the most 
 * Question 3: What are the top ten teams with the highest field goal attempts (FGA), in order from highest to lowest? 
 * Question 4: What are the top ten teams with the highest effective field goal percentages (EFG%) and how it compares to simple Field Goal %?  
-* Question 5: Which teams’ assists on field goals percentage is more than 50%?
+* Question 5: Which teams assists on field goals percentage is more than 50%?
 * Question 6: How often did each team foul their opponent, on average? 
 
 
-#### Individual Level 
+#### Player Level (Players_Analytic) 
 
 * Question 1: Which players averaged over 25 points per game? 
 * Question 2: How many players averaged between 10 and 20 points per game?
