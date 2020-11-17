@@ -79,7 +79,7 @@ The following queries result in views that provide answers to the questions list
 * Question 6: SELECT * FROM FoulPerGame; 
 
 
-![Figure 7 - Average Team Fouls]()
+![Figure 7 - Average Team Fouls](Images/FoulsPerGame.png)
 
 #### Individual Level 
 
