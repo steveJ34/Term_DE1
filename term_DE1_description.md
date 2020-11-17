@@ -13,7 +13,7 @@ The data includes National Basketball Association (NBA) statistics for players, 
 
 
 
-CSV files were used to to store the raw date. Then a schema and tables was created with the same attributes as the CSV files. Finally, the data was inserted into MySQL using the following command 
+CSV files were used to store the raw data. Then a schema and tables were created with the same attributes as the CSV files. Finally, the data was inserted into MySQL using the following command 
 
 LOAD DATA 
 LOCAL INFILE 'path_to_csv_file'
@@ -27,8 +27,8 @@ After the tables were loaded to MySQL, the analytical data layer was established
 
 
 1. Team_Coach_Analytic: includes information about teams such as the Franchise name, name abbreviation, city/state and the coach. In addition, it includes both defensive and offensive statistics. 
-1. Players_Analytic: includes the players’ attributes such as name, age, position and franchise as well as individual performance metrics like games played 
-Create a short plan of what kind of analytics can be potentially executed on this data set. Plan how the analytical data layer, ETL, Data Mart would look like to support these analytics. 
+1. Players_Analytic: includes the players’ attributes such as name, age, position and franchise as well as individual performance metrics like games played.
+
 By creating views from the above data marts, we can potentially answer the following question. 
 
 ### POTENTIAL ANALYTICS:  
