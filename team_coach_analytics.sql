@@ -1,4 +1,4 @@
--- Creating a datamarts for teams, coaches, team statistics
+-- Creating a analytical layer for teams, coaches, team statistics
 use nba_17_18;
  
  DROP PROCEDURE IF EXISTS CreateTeamCoachAnalytic;
@@ -50,14 +50,16 @@ CREATE TABLE messages (
     created_at DATETIME NOT NULL
 );
 
--- Creating an event for Team Stat Coach Data Mart 
+-- Creating an event for Team Stat Coach Data Analytic
 
-CREATE EVENT CreateTeamCoachMartEvent
+DROP EVENT IF EXISTS CreateTeamCoachAnalyticEvent; 
+
+CREATE EVENT CreateTeamCoachAnalyticEvent
 ON SCHEDULE EVERY 1 MINUTE
 STARTS CURRENT_TIMESTAMP
 ENDS CURRENT_TIMESTAMP + INTERVAL 1 HOUR
 DO
-   CALL CreateTeamCoachMart();
+   CALL CreateTeamCoachAnalytic();
    INSERT INTO messages(message,created_at)
    VALUES('Team Stats Coach Mart Created',NOW());
 
@@ -135,8 +137,7 @@ DROP VIEW IF EXISTS FoulPerGame;
 
 CREATE view `FoulPerGame` as 	
 SELECT franchise, fouls/games as foulsPerGm
-FROM Team_Coach_Analytic
-LIMIT 10;
+FROM Team_Coach_Analytic;
 
 SELECT * FROM FoulPerGame;
 
