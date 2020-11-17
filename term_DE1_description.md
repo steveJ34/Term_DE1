@@ -15,12 +15,12 @@ The data includes National Basketball Association (NBA) statistics for players, 
 
 CSV files were used to store the raw data. Then a schema and tables were created with the same attributes as the CSV files. Finally, the data was inserted into MySQL using the following command 
 
-LOAD DATA 
-LOCAL INFILE 'path_to_csv_file'
-INTO TABLE 'corresponding_table'
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\r\n'
-IGNORE 1 LINES 
+* LOAD DATA 
+* LOCAL INFILE 'path_to_csv_file'
+* INTO TABLE 'corresponding_table'
+* FIELDS TERMINATED BY ','
+* LINES TERMINATED BY '\r\n'
+* IGNORE 1 LINES 
 
 ### ANALYTICAL LAYER: 
 After the tables were loaded to MySQL, the analytical data layer was established. Due to the fact that not all of the tables in the operationla layer can be related to each other, the decision to create two analytical tables was made. The tables are created using events which re-create them every minute for an hour and record the times of creation to a table called “messages”. Below is amore deatailed description for each of the created tables.  
