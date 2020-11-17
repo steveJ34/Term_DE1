@@ -1,11 +1,19 @@
-# Term_DE1 Description 
+# Term_DE1  
 
 ## Project Description 
 
 
 ### OPERATIONAL LAYER: 
 
-The data includes National Basketball Association (NBA) statistics for players, teams and coaches for 2017-2018 season. CSV files were used to to store the raw date. Then a schema and tables was created with the same attributes as the CSV files. Finally, the data was inserted into MySQL using the following command 
+The data includes National Basketball Association (NBA) statistics for players, teams and coaches for 2017-2018 season. The relational database can be seen below. 
+
+
+
+![Figure 1 - Relational Database NBA](Images/RelationSchema.png)
+
+
+
+CSV files were used to to store the raw date. Then a schema and tables was created with the same attributes as the CSV files. Finally, the data was inserted into MySQL using the following command 
 
 LOAD DATA 
 LOCAL INFILE 'path_to_csv_file'
@@ -49,19 +57,48 @@ The following queries result in views that provide answers to the questions list
 #### Team Level 
 
 * Question 1: SELECT * FROM CoachesByDefence;
+
+![Figure 2 - Top 10 Defensive Coaches](Images/CoachesByDefence.png)
+
 * Question 2: SELECT * FROM CoachesBy3PAttempt;
+
+![Figure 3 - Top 10 Coaches Relying on 3pt](Images/CoachesBy3PAttempt.png)
+
 * Question 3: SELECT * FROM Top10FGA;
+
+![Figure 4 - Top 10 Teams with Highest FGA](Images/Top10FGA.png)
+
 * Question 4: SELECT * FROM eFGtoFG; 
+
+![Figure 5 - Top 10 Teams with Highest Effective FG%](Images/eFGtoFG.png)
+
 * Question 5: SELECT * FROM AssistOnFGRatio;
+
+![Figure 6 - Top 10 Teams with Assist/FG Raio over 50%](Images/AssistOnFGRatio.png)
+
 * Question 6: SELECT * FROM FoulPerGame; 
 
+
+![Figure 7 - Average Team Fouls]()
 
 #### Individual Level 
 
 * Question 1: SELECT * FROM TopPPG;
 
-![TopPPG](/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/term_project/outcome_tables/TopPPG.png)
+
+![Figure 8 - Top Scorers per Game](Images/TopPPG.png)
+
 
 * Question 2: SELECT * FROM ScorersBtw10and20;
+
+![Figure 9 - Scorers between 10 and 20 Points](Images/ScorersBtw10and20.png)
+
 * Question 3: SELECT * FROM TopTimeEfficient;
+
+
+![Figure 10 - Top 10 Most Time Efficient Players](Images/TopTimeEfficient.png)
+
 * Question 4: SELECT * FROM HalfSeason15Points;
+
+
+![Figure 11 - PLayers that played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
