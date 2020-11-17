@@ -1,6 +1,6 @@
 use nba_17_18;
 
--- Creating analytical layer for individual level of analytics
+-- Creating analytical layer for player statistics
 
  DROP PROCEDURE IF EXISTS CreatePlayersAnalytic;
 
@@ -38,14 +38,14 @@ DELIMITER ;
 
 drop event if exists CreatePlayersAnalyticEvent; 
 
--- Creating an event for Players anallytics tables to see when table is updated 
+-- Creating an event for Players analytics tables to see when table is updated 
  
-CREATE EVENT CreatePlayersMartEvent
+CREATE EVENT CreatePlayersAnalyticEvent
 ON SCHEDULE EVERY 1 MINUTE
 STARTS CURRENT_TIMESTAMP
 ENDS CURRENT_TIMESTAMP + INTERVAL 1 HOUR
 DO
-   CALL CreatePlayersMart();
+   CALL CreatePlayersAnalytic();
    INSERT INTO messages(message,created_at)
    VALUES('Player Mart Created',NOW());
 
@@ -98,13 +98,11 @@ DROP VIEW IF EXISTS HalfSeason15Points;
 
 CREATE VIEW `HalfSeason15Points` AS
 
-
 SELECT Name, Position, Games, Points, CAST(Points as FLOAT)/CAST(Games as FLOAT) as PPG
-FROM Players_Mart
+FROM Players_Analytic
 WHERE Games <= 41 
 AND CAST(Points as FLOAT)/CAST(Games as FLOAT) > 15 
 AND Points > 0
 ORDER BY CAST(Points as FLOAT)/CAST(Games as FLOAT) DESC;
 
-SELECT * FROM HalfSeason15Points; 
-
+SELECT * FROM HalfSeason15Points;
