@@ -129,7 +129,7 @@ SET GLOBAL local_infile = 'ON';
 
 -- Load Coach Stats 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Coach_Stats_v2.csv'
+LOAD DATA LOCAL INFILE '/Data/Coach_Stats_v2.csv'
 INTO TABLE Coach_Stats
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -138,7 +138,7 @@ IGNORE 1 LINES
 
 -- Load Coaches 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Coaches.csv'
+LOAD DATA LOCAL INFILE '/Data/Coaches.csv'
 INTO TABLE Coaches
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -147,7 +147,7 @@ IGNORE 1 LINES
 
 -- Load Player Stats 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Player_Stats.csv'
+LOAD DATA LOCAL INFILE '/Data/Player_Stats.csv'
 INTO TABLE Player_Stats 
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -156,7 +156,7 @@ IGNORE 1 LINES
 
 -- Load Players 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Players.csv'
+LOAD DATA LOCAL INFILE '/Data/Players.csv'
 INTO TABLE Players
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -165,7 +165,7 @@ IGNORE 1 LINES
 
 -- Load Team Stats 
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /data_engineering/DE1SQL/HW/HW1/NBA_data_2017_2018/Team_Stats.csv'
+LOAD DATA LOCAL INFILE '/Data/Team_Stats.csv'
 INTO TABLE Team_Stats
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
@@ -174,7 +174,7 @@ IGNORE 1 LINES
 
 -- Load Teams
 
-LOAD DATA LOCAL INFILE '/Users/steve_j/Documents/CEU /Data Engineering /DE1SQL/HW/HW1/NBA_data_2017_2018/Teams.csv'
+LOAD DATA LOCAL INFILE '/Data/Teams.csv'
 INTO TABLE Teams
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
