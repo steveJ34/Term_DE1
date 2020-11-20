@@ -2,7 +2,7 @@
 
 ## NBA Statistics (2017-2018)
 
-### Project Details
+### Project Aim
 
 The aim of this project is to link concepts learned during the DE1SQL course by exercising SQL statements covered.
 
