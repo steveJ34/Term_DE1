@@ -9,7 +9,7 @@ The data includes National Basketball Association (NBA) statistics for players, 
 
 
 
-![Figure 1 - Relational Database NBA](Images/RelationSchema.png)
+![Figure 1 - Relational Database NBA](Images/RelationSchema1.png)
 
 
 
