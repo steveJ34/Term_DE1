@@ -36,10 +36,8 @@ By creating views from the above data marts, we can potentially answer the follo
 #### Team Level (Team_Coach_Analytic)
 
 * Question 1: Who are the top 10 defensive coaches including. The view is ordered by steals, assuming steals are the ultimate goal of a tema on defence. 
-* Question 2: Who are the top 10 coaches that rely on three point shots the most 
-* Question 3: What are the top ten teams with the highest field goal attempts (FGA), in order from highest to lowest? 
-* Question 4: What are the top ten teams with the highest effective field goal percentages (EFG%) and how it compares to simple Field Goal %?  
-* Question 5: Which teams assists on field goals percentage is more than 50%?
+* Question 2: What are the shooting patterns in terms of 3 point shooting and how it effects the Filed Goal and Effective Field Goal percentages? 
+* Question 3: Which Coaches move the ball the most (assist on field goal ratio is over 0.5) and how it affects the turnovers? 
 
 
 
@@ -85,4 +83,4 @@ The following queries result in views that provide answers to the questions list
 * Question 3: SELECT * FROM HalfSeason15Points;
 
 
-![Figure 10 - PLayers that played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
+![Figure 10 - PLayers that Played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
