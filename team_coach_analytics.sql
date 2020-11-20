@@ -1,4 +1,5 @@
--- Creating a analytical layer for teams, coaches, team statistics
+-- Creating a datamart for teams, coaches, team statistics
+
 use nba_17_18;
  
  DROP PROCEDURE IF EXISTS CreateTeamCoachAnalytic;
@@ -87,7 +88,7 @@ DROP VIEW IF EXISTS CoachesBy3PAttempt;
 
 CREATE VIEW `CoachesBy3PAttempt` AS
 
-SELECT Coach, Franchise, Team_3PA, Team_3P, Team_3PP FROM Team_Coach_Analytic
+SELECT Coach, Franchise, Team_3PA, Team_3P, ROUND (Team_3PP, 2) FROM Team_Coach_Analytic
 ORDER BY Team_3PA DESC
 LIMIT 10;
 
@@ -112,7 +113,7 @@ DROP VIEW IF EXISTS eFGtoFG;
 
 CREATE VIEW `eFGtoFG` AS
 
-SELECT Franchise, FieldGoalsPercent, (FieldGoals + (0.5 * team_3P))/FieldGoalsAttempt as eFieldGoal 
+SELECT Franchise, ROUND(FieldGoalsPercent, 2), ROUND((FieldGoals + (0.5 * team_3P))/FieldGoalsAttempt, 2)as eFieldGoal 
 FROM Team_Coach_Analytic
 ORDER BY eFieldGoal DESC
 LIMIT 10;
@@ -125,7 +126,7 @@ DROP VIEW IF EXISTS AssistOnFGRatio;
 
 CREATE VIEW `AssistOnFGRatio` AS
 
-SELECT Franchise, CAST(Assist as FLOAT)/CAST(FieldGoals as FLOAT) as AssistOnFieldGoalRatio
+SELECT Franchise, ROUND(CAST(Assist as FLOAT)/CAST(FieldGoals as FLOAT), 2) as AssistOnFieldGoalRatio
 FROM Team_Coach_Analytic
 WHERE CAST(assist as FLOAT)/CAST(fieldgoals as FLOAT) > .5;
 
@@ -136,7 +137,7 @@ SELECT * FROM AssistOnFGRatio;
 DROP VIEW IF EXISTS FoulPerGame; 
 
 CREATE view `FoulPerGame` as 	
-SELECT franchise, fouls/games as foulsPerGm
+SELECT franchise, ROUND(fouls/games, 2) as foulsPerGm
 FROM Team_Coach_Analytic;
 
 SELECT * FROM FoulPerGame;
