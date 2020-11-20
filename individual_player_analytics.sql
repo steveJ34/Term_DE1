@@ -59,22 +59,12 @@ DROP VIEW IF EXISTS TopPPG;
 
 CREATE VIEW `TopPPG` AS
 
-SELECT Name, Position, Age, ROUND(Points/Games, 2) AS ppg
+SELECT Name, Position, Age, Games, ROUND(Points/Games, 2) AS ppg
 FROM Players_Analytic
 WHERE Points/Games >= 25;
 
 SELECT * FROM TopPPG; 
 
--- Count of players that averaged between 10 and 20 points per game
-
-DROP VIEW IF EXISTS ScorersBtw10and20;
-
-CREATE VIEW `ScorersBtw10and20` AS
-SELECT COUNT(*) as numberOfPlayers
-FROM Players_Analytic
-WHERE Points/Games BETWEEN 10 AND 20;
-
-SELECT * FROM ScorersBtw10and20;
 
 -- Top 10 most time efficient scorers in the league
 
@@ -82,7 +72,7 @@ DROP VIEW IF EXISTS TopTimeEfficient;
 
 CREATE VIEW `TopTimeEfficient` AS
 
-SELECT Name, Position, Points, MinutesPlayed, ROUND (pointsPer48, 2)
+SELECT Name, Position, Points, MinutesPlayed, ROUND (pointsPer48, 2) AS PointsPer48
 FROM (
 	SELECT Name, Position, Points, MinutesPlayed, CAST(Points as FLOAT)*48/CAST(MinutesPlayed as FLOAT) as PointsPer48
 	FROM Players_Analytic
@@ -106,4 +96,3 @@ AND Points > 0
 ORDER BY CAST(Points as FLOAT)/CAST(Games as FLOAT) DESC;
 
 SELECT * FROM HalfSeason15Points; 
-
