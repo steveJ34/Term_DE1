@@ -57,7 +57,7 @@ The following queries result in views that provide answers to the questions list
 
 * Question 1: SELECT * FROM CoachesByDefence;
 
-![Figure 2 - Top 10 Defensive Coaches](Images/CoachesPerDefence.png)
+![Figure 2 - Top 10 Defensive Coaches](Images/CoachPerDefence.png)
 
 * Question 2: SELECT * FROM CoachesBy3PShooting;
 
@@ -65,7 +65,7 @@ The following queries result in views that provide answers to the questions list
 
 * Question 3: SELECT * FROM CoachesByAssist;
 
-![Figure 4 - Coaches by Passing](Images/CoahesByPassing.png)
+![Figure 4 - Coaches by Passing](Images/CoachesByPassing.png)
 
 
 
@@ -74,13 +74,13 @@ The following queries result in views that provide answers to the questions list
 * Question 1: SELECT * FROM TopPPG;
 
 
-![Figure 8 - Top Scorers per Game](Images/TopPPG.png)
+![Figure 8 - Top Scorers per Game](Images/TopScorers.png)
 
 
 * Question 2: SELECT * FROM TopTimeEfficient;
 
 
-![Figure 9 - Top 10 Most Time Efficient Players](Images/TopTimeEfficient.png)
+![Figure 9 - Top 10 Most Time Efficient Players](Images/PointsPer48.png)
 
 * Question 3: SELECT * FROM HalfSeason15Points;
 
