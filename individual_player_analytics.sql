@@ -59,7 +59,7 @@ DROP VIEW IF EXISTS TopPPG;
 
 CREATE VIEW `TopPPG` AS
 
-SELECT Name, Position, Age, Points/Games AS ppg
+SELECT Name, Position, Age, ROUND(Points/Games, 2) AS ppg
 FROM Players_Analytic
 WHERE Points/Games >= 25;
 
@@ -82,7 +82,7 @@ DROP VIEW IF EXISTS TopTimeEfficient;
 
 CREATE VIEW `TopTimeEfficient` AS
 
-SELECT Name, Position, Points, MinutesPlayed, pointsPer48
+SELECT Name, Position, Points, MinutesPlayed, ROUND (pointsPer48, 2)
 FROM (
 	SELECT Name, Position, Points, MinutesPlayed, CAST(Points as FLOAT)*48/CAST(MinutesPlayed as FLOAT) as PointsPer48
 	FROM Players_Analytic
@@ -98,11 +98,12 @@ DROP VIEW IF EXISTS HalfSeason15Points;
 
 CREATE VIEW `HalfSeason15Points` AS
 
-SELECT Name, Position, Games, Points, CAST(Points as FLOAT)/CAST(Games as FLOAT) as PPG
+SELECT Name, Position, Games, Points, ROUND (CAST(Points as FLOAT)/CAST(Games as FLOAT),2) as PPG
 FROM Players_Analytic
 WHERE Games <= 41 
 AND CAST(Points as FLOAT)/CAST(Games as FLOAT) > 15 
 AND Points > 0
 ORDER BY CAST(Points as FLOAT)/CAST(Games as FLOAT) DESC;
 
-SELECT * FROM HalfSeason15Points;
+SELECT * FROM HalfSeason15Points; 
+
