@@ -50,7 +50,7 @@ SELECT * FROM messages;
 
 -- Creating data marts as views to answer the analytic questions
  
--- Players that averaged 25 or more points per game
+-- Players that averaged 25 or more points per game and how many games they played 
 
 DROP VIEW IF EXISTS TopPPG;
 
@@ -79,7 +79,7 @@ LIMIT 10;
 
 SELECT * FROM TopTimeEfficient;
 
--- PLayers who played half the season or less but still averaged 15 points 
+-- Players who played half the season or less but still averaged 15 points 
 
 DROP VIEW IF EXISTS HalfSeason15Points;
 
