@@ -1,4 +1,4 @@
-### Codes
+## Codes
 
 Contains all the codes that are used to upload the data to MySQL and obtain the answers to the analytical questions. The specific codes are listed below. 
 
