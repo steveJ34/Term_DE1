@@ -76,7 +76,7 @@ DROP VIEW IF EXISTS CoachesByDefence;
 
 CREATE VIEW `CoachesByDefence` AS
 
-SELECT Coach, Franchise, Steal, BlockShot, Fouls FROM Team_Coach_Analytic
+SELECT Coach, Franchise, Steal, ROUND(Steal/games, 2) AS StealperGm , BlockShot, ROUND(BlockShot/games, 2) AS BlockShotPerGm, Fouls, ROUND(fouls/games, 2) AS FoulsPerGm FROM Team_Coach_Analytic
 ORDER BY Steal DESC
 LIMIT 10;
 
@@ -84,61 +84,25 @@ SELECT * FROM CoachesByDefence;
 
 -- Top 10 Coaches who rely on three point shots  
 
-DROP VIEW IF EXISTS CoachesBy3PAttempt;
+DROP VIEW IF EXISTS CoachesBy3PShooting;
 
-CREATE VIEW `CoachesBy3PAttempt` AS
+CREATE VIEW `CoachesBy3PShooting` AS
 
-SELECT Coach, Franchise, Team_3PA, Team_3P, ROUND (Team_3PP, 2) FROM Team_Coach_Analytic
-ORDER BY Team_3PA DESC
+SELECT Coach, Franchise, Team_3PA, Team_3P, ROUND (Team_3PP, 2) AS Team_3PP, ROUND(FieldGoalsPercent, 2) AS FieldGoal, ROUND((FieldGoals + (0.5 * team_3P))/FieldGoalsAttempt, 2)as eFieldGoal FROM Team_Coach_Analytic
+ORDER BY Team_3P DESC
 LIMIT 10;
 
-SELECT * FROM CoachesBy3PAttempt;
+SELECT * FROM CoachesBy3PShooting;
 
+-- Coaches by passing 
 
--- Top 10 teams which have the highest FG attempts 
+DROP VIEW IF EXISTS CoachesByPassing;  
 
-DROP VIEW IF EXISTS Top10FGA;
+CREATE VIEW `CoachesByPassing` AS
 
-CREATE VIEW `Top10FGA` AS
-
-SELECT Franchise, FieldGoalsAttempt FROM Team_Coach_Analytic
-ORDER BY FieldGoalsAttempt DESC
-LIMIT 10;
-
-SELECT * FROM Top10FGA;  	
-
--- Comparing effective Field Goal % to Field Goal % for top 10 teams with highest effective Field Goal % 
-
-DROP VIEW IF EXISTS eFGtoFG;
-
-CREATE VIEW `eFGtoFG` AS
-
-SELECT Franchise, ROUND(FieldGoalsPercent, 2), ROUND((FieldGoals + (0.5 * team_3P))/FieldGoalsAttempt, 2)as eFieldGoal 
-FROM Team_Coach_Analytic
-ORDER BY eFieldGoal DESC
-LIMIT 10;
-
-SELECT * FROM eFGtoFG;
-
--- Teams which assists on field goals percentage is more than 50\% (more passing oriented)
-
-DROP VIEW IF EXISTS AssistOnFGRatio;  
-
-CREATE VIEW `AssistOnFGRatio` AS
-
-SELECT Franchise, ROUND(CAST(Assist as FLOAT)/CAST(FieldGoals as FLOAT), 2) as AssistOnFieldGoalRatio
+SELECT Franchise, Assist, ROUND(CAST(Assist as FLOAT)/CAST(FieldGoals as FLOAT), 2) as AssistOnFieldGoalRatio, Turnover
 FROM Team_Coach_Analytic
 WHERE CAST(assist as FLOAT)/CAST(fieldgoals as FLOAT) > .5;
 
-SELECT * FROM AssistOnFGRatio;  
-
--- How often teams foul their opponents
-
-DROP VIEW IF EXISTS FoulPerGame; 
-
-CREATE view `FoulPerGame` as 	
-SELECT franchise, ROUND(fouls/games, 2) as foulsPerGm
-FROM Team_Coach_Analytic;
-
-SELECT * FROM FoulPerGame;
+SELECT * FROM CoachesByPassing;  
 
