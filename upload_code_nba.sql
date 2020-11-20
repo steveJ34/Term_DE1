@@ -7,31 +7,6 @@ USE nba_17_18;
 
 -- Creating Tables
 
--- Coach Stats
-
-CREATE TABLE Coach_Stats (
-Name     VARCHAR(100) NOT NULL,
-Team     VARCHAR(10),
-SeasG    INT,
-SeasW    INT,
-SeasL    INT,
-FranG    INT,
-FranW    INT,
-FranL    INT,
-CareW    INT,
-CareL    INT,
-CareWP   FLOAT,
-POSeasG  INT,
-POSeasW  INT,
-POSeasL  INT,
-POFranG  INT,
-POFranW  INT,
-POFranL  INT,
-POCareG  INT,
-POCareW  INT,
-POCareL  INT,
-PRIMARY KEY(Name));
-
 -- Coahes
 
 CREATE TABLE Coaches (
@@ -126,15 +101,6 @@ SET GLOBAL local_infile = 'ON';
 
 
 -- Loading Data 
-
--- Load Coach Stats 
-
-LOAD DATA LOCAL INFILE '/Data/Coach_Stats_v2.csv'
-INTO TABLE Coach_Stats
-FIELDS TERMINATED BY ','
-LINES TERMINATED BY '\r\n'
-IGNORE 1 LINES
-(Name, Team, SeasG, SeasW, SeasL, FranG, FranW, FranL, CareW, CareL, CareWP, POSeasG, POSeasW, POSeasL, POFranG, POFranW, POFranL, POCareG, POCareW, POCareL);
 
 -- Load Coaches 
 
