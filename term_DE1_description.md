@@ -39,7 +39,7 @@ The process of ETL included the extraction of chosen metrics from the Aanlytical
 
 #### Team Level (Team_Coach_Analytic)
 
-* Question 1: Who are the top 10 defensive coaches including. The view is ordered by steals, assuming steals are the ultimate goal of a tema on defence. 
+* Question 1: Who are the top 10 defensive coaches including aggreagated and per game stats for steals, rebounds and Blocked shots. The view is ordered by steals, assuming steals are the ultimate goal of a tema on defence. 
 * Question 2: What are the shooting patterns in terms of 3 point shooting and how it effects the Filed Goal and Effective Field Goal percentages? 
 * Question 3: Which Coaches move the ball the most (assist on field goal ratio is over 0.5) and how it affects the turnovers? 
 
@@ -47,7 +47,7 @@ The process of ETL included the extraction of chosen metrics from the Aanlytical
 
 #### Player Level (Players_Analytic) 
 
-* Question 1: Which players averaged over 25 points per game? 
+* Question 1: Which players averaged over 25 points per game and how amny games they played? 
 * Question 2: Who was the most time (48 minutes) efficient scorer in the league? 
 * Question 3: What players played less than or equal to half the season but scored over 15 points a game? 
 
