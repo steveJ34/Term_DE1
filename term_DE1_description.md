@@ -31,6 +31,10 @@ After the tables were loaded to MySQL, the analytical data layer was established
 
 By creating views from the above data marts, we can potentially answer the following question. 
 
+### ETL 
+
+The process of ETL included the extraction of chosen metrics from the Aanlytical Layer, transformation by using arithmetic operations (where applicable), combibing the outcomes with readily available data and loading back to views which provide answers to the questions listed below. 
+
 ### POTENTIAL ANALYTICS:  
 
 #### Team Level (Team_Coach_Analytic)
