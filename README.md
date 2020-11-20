@@ -12,7 +12,6 @@ The aim of this project is to link concepts learned during the DE1SQL course by 
 
 The directory contains the data used for the project in csv format. It includes the following six tables: 
 
-* Coach_Stats_v2
 * Coaches
 * Player_Stats
 * Players 
