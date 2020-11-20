@@ -57,15 +57,15 @@ The following queries result in views that provide answers to the questions list
 
 * Question 1: SELECT * FROM CoachesByDefence;
 
-![Figure 2 - Top 10 Defensive Coaches](Images/CoachesByDefence.png)
+![Figure 2 - Top 10 Defensive Coaches](Images/CoachesPerDefence.png)
 
 * Question 2: SELECT * FROM CoachesBy3PShooting;
 
-![Figure 3 - Top 10 Coaches Relying on 3pt](Images/CoachesBy3PAttempt.png)
+![Figure 3 - Top 10 Coaches by Shooting Patterns](Images/CoachesBy3PShooting.png)
 
 * Question 3: SELECT * FROM CoachesByAssist;
 
-![Figure 4 - Top 10 Teams with Highest FGA](Images/Top10FGA.png)
+![Figure 4 - Coaches by Passing](Images/CoahesByPassing.png)
 
 
 
