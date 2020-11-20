@@ -22,9 +22,6 @@ DROP TABLE IF EXISTS Players_Analytic;
 	   Player_Stats.FG As FieldGoals,
 	   Player_Stats.FGA As FieldGoalsAttempt,   
 	   Player_Stats.FGP As FieldGoalsPercent,
-	   Player_Stats.TRB As TotRebound,
-	   Player_Stats.AST As Assist,
-       Player_Stats.TOV As Turnover,
        Player_Stats.PTS As Points
        
 	FROM Players
