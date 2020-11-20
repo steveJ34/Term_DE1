@@ -68,9 +68,9 @@ DO
 
 SELECT * FROM messages;
 
--- Potential Analytics that can be done with Team and Coach level data using views 
+-- Potential Analytics that can be done with Team and Coach data using views 
 
--- Top 10 Coaches by steals 
+-- Top 10 Coaches by defence. Showstop 10 defensive coaches including aggreagated and per game stats for steals, rebounds and Blocked shots. Ordered by steals, assuming steals are the ultimate goal of a tema on defence 
 
 DROP VIEW IF EXISTS CoachesByDefence;
 
@@ -82,19 +82,18 @@ LIMIT 10;
 
 SELECT * FROM CoachesByDefence; 
 
--- Top 10 Coaches who rely on three point shots  
+-- Shooting patterns of different teams depending on coach in terms of 3 point shootin and its effects the Filed Goal and Effective Field Goal percentages
 
 DROP VIEW IF EXISTS CoachesBy3PShooting;
 
 CREATE VIEW `CoachesBy3PShooting` AS
 
 SELECT Coach, Franchise, Team_3PA, Team_3P, ROUND (Team_3PP, 2) AS Team_3PP, ROUND(FieldGoalsPercent, 2) AS FieldGoal, ROUND((FieldGoals + (0.5 * team_3P))/FieldGoalsAttempt, 2)as eFieldGoal FROM Team_Coach_Analytic
-ORDER BY Team_3P DESC
-LIMIT 10;
+ORDER BY Team_3P DESC;
 
 SELECT * FROM CoachesBy3PShooting;
 
--- Coaches by passing 
+-- Coaches who move the ball the most (assist on field goal ratio is over 0.5) and how it affects the turnovers
 
 DROP VIEW IF EXISTS CoachesByPassing;  
 
