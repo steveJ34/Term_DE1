@@ -35,12 +35,12 @@ By creating views from the above data marts, we can potentially answer the follo
 
 #### Team Level (Team_Coach_Analytic)
 
-* Question 1: Who are the top 10 defensive coaches (ordered by steals)
+* Question 1: Who are the top 10 defensive coaches including. The view is ordered by steals, assuming steals are the ultimate goal of a tema on defence. 
 * Question 2: Who are the top 10 coaches that rely on three point shots the most 
 * Question 3: What are the top ten teams with the highest field goal attempts (FGA), in order from highest to lowest? 
 * Question 4: What are the top ten teams with the highest effective field goal percentages (EFG%) and how it compares to simple Field Goal %?  
 * Question 5: Which teams assists on field goals percentage is more than 50%?
-* Question 6: How often did each team foul their opponent, on average? 
+
 
 
 #### Player Level (Players_Analytic) 
@@ -59,26 +59,15 @@ The following queries result in views that provide answers to the questions list
 
 ![Figure 2 - Top 10 Defensive Coaches](Images/CoachesByDefence.png)
 
-* Question 2: SELECT * FROM CoachesBy3PAttempt;
+* Question 2: SELECT * FROM CoachesBy3PShooting;
 
 ![Figure 3 - Top 10 Coaches Relying on 3pt](Images/CoachesBy3PAttempt.png)
 
-* Question 3: SELECT * FROM Top10FGA;
+* Question 3: SELECT * FROM CoachesByAssist;
 
 ![Figure 4 - Top 10 Teams with Highest FGA](Images/Top10FGA.png)
 
-* Question 4: SELECT * FROM eFGtoFG; 
 
-![Figure 5 - Top 10 Teams with Highest Effective FG%](Images/eFGtoFG.png)
-
-* Question 5: SELECT * FROM AssistOnFGRatio;
-
-![Figure 6 - Top 10 Teams with Assist/FG Raio over 50%](Images/AssistOnFGRatio.png)
-
-* Question 6: SELECT * FROM FoulPerGame; 
-
-
-![Figure 7 - Average Team Fouls](Images/FoulsPerGame.png)
 
 #### Individual Level 
 
@@ -93,7 +82,7 @@ The following queries result in views that provide answers to the questions list
 
 ![Figure 9 - Top 10 Most Time Efficient Players](Images/TopTimeEfficient.png)
 
-* Question 4: SELECT * FROM HalfSeason15Points;
+* Question 3: SELECT * FROM HalfSeason15Points;
 
 
 ![Figure 10 - PLayers that played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
