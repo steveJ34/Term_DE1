@@ -46,9 +46,8 @@ By creating views from the above data marts, we can potentially answer the follo
 #### Player Level (Players_Analytic) 
 
 * Question 1: Which players averaged over 25 points per game? 
-* Question 2: How many players averaged between 10 and 20 points per game?
-* Question 3: Who was the most time (48 minutes) efficient scorer in the league? 
-* Question 4: What players played less than or equal to half the season but scored over 15 points a game? 
+* Question 2: Who was the most time (48 minutes) efficient scorer in the league? 
+* Question 3: What players played less than or equal to half the season but scored over 15 points a game? 
 
 ### DATA MART: 
 
@@ -89,16 +88,12 @@ The following queries result in views that provide answers to the questions list
 ![Figure 8 - Top Scorers per Game](Images/TopPPG.png)
 
 
-* Question 2: SELECT * FROM ScorersBtw10and20;
-
-![Figure 9 - Scorers between 10 and 20 Points](Images/ScorersBtw10and20.png)
-
-* Question 3: SELECT * FROM TopTimeEfficient;
+* Question 2: SELECT * FROM TopTimeEfficient;
 
 
-![Figure 10 - Top 10 Most Time Efficient Players](Images/TopTimeEfficient.png)
+![Figure 9 - Top 10 Most Time Efficient Players](Images/TopTimeEfficient.png)
 
 * Question 4: SELECT * FROM HalfSeason15Points;
 
 
-![Figure 11 - PLayers that played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
+![Figure 10 - PLayers that played Half Season or Less but Avearged at least 15 PPG ](Images/HalfSeason15Points.png)
